@@ -1,0 +1,33 @@
+---
+title: "`r params$title`"
+output: 
+  word_document: default
+params:
+  data: NA
+  title: "My Report"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+```
+
+```{r}
+ggplot(params$data, aes(x = mpg, y = hp)) +
+  geom_point(color = "blue") +
+  ggtitle("MPG vs HP")
+```
+
+```{r}
+ggplot(params$data, aes(x = wt, y = qsec)) +
+  geom_point(color = "green") +
+  ggtitle("Weight vs 1/4 Mile Time")
+
+```
+
+```{r}
+knitr::kable(head(params$data, 10))
+```
+
+
+
